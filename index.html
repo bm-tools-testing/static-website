@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Business Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="https://via.placeholder.com/150x50/1e40af/ffffff?text=LOGO" alt="Company Logo" class="logo">
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1518005108369-12a8b1c429a0" alt="Modern Business Building" class="hero-bg">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <div class="container">
+                    <h1 class="hero-title">Building Tomorrow's Success</h1>
+                    <p class="hero-subtitle">Professional solutions for modern businesses. We deliver excellence in every project with innovative approaches and proven results.</p>
+                    <button class="cta-button">Get Started</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <h2 class="section-title">Our Portfolio</h2>
+                <p class="section-subtitle">Discover our latest projects and achievements</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1479292889369-1a48f234247e" alt="Modern Architecture" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Modern Architecture</h3>
+                            <p class="gallery-description">Innovative design solutions</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.pexels.com/photos/7616608/pexels-photo-7616608.jpeg" alt="Professional Team" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Expert Team</h3>
+                            <p class="gallery-description">Dedicated professionals</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643" alt="Modern Workspace" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Modern Workspace</h3>
+                            <p class="gallery-description">Collaborative environment</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1462556791646-c201b8241a94" alt="Business Innovation" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Innovation Hub</h3>
+                            <p class="gallery-description">Future-focused solutions</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://via.placeholder.com/400x300/3b82f6/ffffff?text=Project+5" alt="Additional Project" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Custom Solutions</h3>
+                            <p class="gallery-description">Tailored approaches</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://via.placeholder.com/400x300/1e40af/ffffff?text=Project+6" alt="Another Project" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Strategic Planning</h3>
+                            <p class="gallery-description">Comprehensive strategies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Ready to start your next project? Contact us today!</p>
+                
+                <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <!-- Hidden field for Netlify forms -->
+                    <input type="hidden" name="form-name" value="contact">
+                    <!-- Honeypot field for spam protection -->
+                    <p style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </p>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" class="form-input" required>
+                            <div class="error-message" id="firstNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="form-label">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" class="form-input" required>
+                            <div class="error-message" id="lastNameError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input">
+                            <div class="error-message" id="phoneError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comments" class="form-label">Comments *</label>
+                        <textarea id="comments" name="comments" class="form-textarea" rows="5" placeholder="Tell us about your project..." required></textarea>
+                        <div class="error-message" id="commentsError"></div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-primary" id="submitBtn">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="copyright">&copy; 2025 Professional Business Solutions. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#privacy" class="footer-link">Privacy Policy</a>
+                    <a href="#terms" class="footer-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
