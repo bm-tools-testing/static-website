@@ -73,7 +73,7 @@ function initFormValidation() {
     if (resetBtn) {
         resetBtn.addEventListener('click', function() {
             setTimeout(() => {
-                clearAllErrors();
+                resetForm();
             }, 10);
         });
     }
