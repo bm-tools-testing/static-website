@@ -56,30 +56,27 @@ function initSmoothScrolling() {
 // Form Validation and Handling
 function initFormValidation() {
     const form = document.querySelector('.contact-form');
-    const cancelBtn = document.getElementById('cancelBtn');
-    const submitBtn = document.getElementById('submitBtn');
     
     if (!form) return;
     
-    // Cancel button functionality
-    if (cancelBtn) {
-        cancelBtn.addEventListener('click', function() {
-            resetForm();
+    // Form submission - let Netlify handle it
+    form.addEventListener('submit', function(e) {
+        if (!validateForm()) {
+            e.preventDefault();
+            return false;
+        }
+        // If validation passes, let Netlify handle the submission
+    });
+    
+    // Reset button functionality
+    const resetBtn = form.querySelector('button[type="reset"]');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            setTimeout(() => {
+                clearAllErrors();
+            }, 10);
         });
     }
-    
-    // Form submission
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        if (validateForm()) {
-            // For demonstration - in real CMS integration, this would be handled by the CMS
-            showSuccessMessage();
-            
-            // For Netlify Forms, we would submit the form normally:
-            // this.submit();
-        }
-    });
     
     // Real-time validation
     const inputs = form.querySelectorAll('.form-input, .form-textarea');
