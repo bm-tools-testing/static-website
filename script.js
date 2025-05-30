@@ -174,7 +174,14 @@ function showFieldError(input, message) {
         errorElement.classList.toggle('show', !!message);
     }
     
-    input.classList.toggle('error', !!message);
+    // Add error styling to input
+    if (message) {
+        input.style.borderColor = '#ef4444';
+        input.classList.add('error');
+    } else {
+        input.style.borderColor = '#e5e7eb';
+        input.classList.remove('error');
+    }
 }
 
 function clearFieldError(input) {
