@@ -325,10 +325,17 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0.25rem;
     opacity: 0;
     transition: opacity 0.3s ease;
+    display: block;
 }
 
 .error-message.show {
     opacity: 1;
+}
+
+.form-input.error,
+.form-textarea.error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
 }
 
 .form-actions {
