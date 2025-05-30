@@ -108,48 +108,46 @@
                 <p class="section-subtitle">Ready to start your next project? Contact us today!</p>
                 
                 <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                    <!-- Hidden field for Netlify forms -->
-                    <input type="hidden" name="form-name" value="contact">
-                    <!-- Honeypot field for spam protection -->
-                    <p style="display: none;">
-                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    <input type="hidden" name="form-name" value="contact" />
+                    <p hidden>
+                        <label>Don't fill this out: <input name="bot-field" /></label>
                     </p>
-                    
+
                     <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName" class="form-label">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" class="form-input" required>
+                        <p class="form-field">
+                            <label class="form-label">First Name *</label>
+                            <input type="text" name="firstName" id="firstName" class="form-input" required>
                             <div class="error-message" id="firstNameError"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName" class="form-label">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" class="form-input" required>
+                        </p>
+                        <p class="form-field">
+                            <label class="form-label">Last Name *</label>
+                            <input type="text" name="lastName" id="lastName" class="form-input" required>
                             <div class="error-message" id="lastNameError"></div>
-                        </div>
+                        </p>
                     </div>
-                    
+
                     <div class="form-row">
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address *</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
+                        <p class="form-field">
+                            <label class="form-label">Email *</label>
+                            <input type="email" name="email" id="email" class="form-input" required>
                             <div class="error-message" id="emailError"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-input">
+                        </p>
+                        <p class="form-field">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" name="phone" id="phone" class="form-input">
                             <div class="error-message" id="phoneError"></div>
-                        </div>
+                        </p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="comments" class="form-label">Comments *</label>
-                        <textarea id="comments" name="comments" class="form-textarea" rows="5" placeholder="Tell us about your project..." required></textarea>
+
+                    <p class="form-field">
+                        <label class="form-label">Comments *</label>
+                        <textarea name="comments" id="comments" class="form-textarea" rows="5" placeholder="Tell us about your project..." required></textarea>
                         <div class="error-message" id="commentsError"></div>
-                    </div>
-                    
+                    </p>
+
                     <div class="form-actions">
-                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
-                        <button type="submit" class="btn-primary" id="submitBtn">Send Message</button>
+                        <button type="reset" class="btn-secondary">Cancel</button>
+                        <button type="submit" class="btn-primary">Submit</button>
                     </div>
                 </form>
             </div>
