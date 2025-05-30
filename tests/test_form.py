@@ -2,6 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 import sys
+import re
 
 def test_netlify_form():
     """Test the Netlify form structure and attributes"""
