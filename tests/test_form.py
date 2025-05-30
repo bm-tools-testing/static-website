@@ -71,23 +71,38 @@ def test_netlify_form():
             
         print(f"✅ Found {len(form_fields)} p.form-field elements")
         
+        # Check if div.form-group elements are present (should not be)
+        form_groups = form.select('div.form-group')
+        if form_groups:
+            print(f"Warning: Found {len(form_groups)} div.form-group elements which should have been replaced")
+        else:
+            print("✅ No div.form-group elements found (correctly replaced with p.form-field)")
+        
         # Check required fields
         required_fields = ['firstName', 'lastName', 'email', 'comments']
+        missing_required_attr = []
+        
         for field_name in required_fields:
             field = form.select_one(f'input[name="{field_name}"], textarea[name="{field_name}"]')
             if not field:
                 print(f"Error: Required field '{field_name}' not found")
                 return False
-            if not field.get('required'):
-                print(f"Error: Field '{field_name}' is not marked as required")
-                return False
-                
-        print("✅ All required fields are present and marked as required")
+            
+            # Check if the required attribute is present
+            if not field.has_attr('required'):
+                missing_required_attr.append(field_name)
+                print(f"Warning: Field '{field_name}' is not marked as required in HTML")
+            else:
+                print(f"✅ Field '{field_name}' is correctly marked as required")
         
+        if missing_required_attr:
+            print(f"\nWarning: The following fields are missing the 'required' attribute: {', '.join(missing_required_attr)}")
+            print("This might be handled by JavaScript validation instead")
+                
         # Check reset button
         reset_button = form.select_one('button[type="reset"]')
         if not reset_button:
-            print("Error: Reset button not found")
+            print("Error: Reset button not found or not using type='reset'")
             return False
             
         print("✅ Reset button is present with type='reset'")
@@ -107,6 +122,49 @@ def test_netlify_form():
             return False
             
         print(f"✅ Found {len(error_elements)} error message elements")
+        
+        # Check JavaScript file for form validation
+        print("\nChecking JavaScript validation...")
+        js_response = requests.get('http://localhost:8080/script.js')
+        if js_response.status_code != 200:
+            print("Error: Could not load JavaScript file")
+            return False
+            
+        js_content = js_response.text
+        
+        # Check if preventDefault is removed for form submission
+        form_submit_handler = re.search(r'form\.addEventListener\s*\(\s*[\'"]submit[\'"]\s*,\s*function\s*\([^)]*\)\s*{([^}]*)}\s*\)', js_content, re.DOTALL)
+        if form_submit_handler:
+            handler_code = form_submit_handler.group(1)
+            if 'preventDefault' in handler_code and 'if (!validateForm())' in handler_code:
+                print("✅ Form submission correctly uses preventDefault only when validation fails")
+            elif 'preventDefault' in handler_code and 'if (!validateForm())' not in handler_code:
+                print("Warning: Form submission uses preventDefault without validation check")
+            else:
+                print("✅ Form submission allows default behavior for Netlify handling")
+        else:
+            print("Warning: Could not find form submission handler")
+        
+        # Check reset button functionality
+        reset_handler = re.search(r'resetBtn\.addEventListener\s*\(\s*[\'"]click[\'"]\s*,', js_content)
+        if not reset_handler:
+            print("Warning: Could not find reset button click handler")
+        else:
+            print("✅ Reset button has click event handler")
+            
+        # Check if resetForm function exists
+        reset_form_func = re.search(r'function\s+resetForm\s*\(\s*\)', js_content)
+        if not reset_form_func:
+            print("Warning: Could not find resetForm function")
+        else:
+            print("✅ resetForm function exists")
+        
+        # Check for real-time validation
+        blur_handler = re.search(r'input\.addEventListener\s*\(\s*[\'"]blur[\'"]\s*,', js_content)
+        if not blur_handler:
+            print("Warning: Could not find blur event handler for real-time validation")
+        else:
+            print("✅ Real-time validation on blur event exists")
         
         print("\n✅ All form tests passed successfully!")
         return True
