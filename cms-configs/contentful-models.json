@@ -1,0 +1,306 @@
+{
+  "contentTypes": [
+    {
+      "sys": {
+        "id": "homePage"
+      },
+      "name": "Home Page",
+      "description": "Home page content and hero section",
+      "displayField": "heroTitle",
+      "fields": [
+        {
+          "id": "heroTitle",
+          "name": "Hero Title",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "id": "heroSubtitle",
+          "name": "Hero Subtitle",
+          "type": "Text",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 500
+              }
+            }
+          ]
+        },
+        {
+          "id": "heroImage",
+          "name": "Hero Image",
+          "type": "Link",
+          "linkType": "Asset",
+          "required": true,
+          "validations": [
+            {
+              "linkMimetypeGroup": ["image"]
+            }
+          ]
+        },
+        {
+          "id": "gallery",
+          "name": "Gallery",
+          "type": "Array",
+          "required": false,
+          "items": {
+            "type": "Link",
+            "linkType": "Entry",
+            "validations": [
+              {
+                "linkContentType": ["galleryItem"]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "galleryItem"
+      },
+      "name": "Gallery Item",
+      "description": "Individual gallery item with image and description",
+      "displayField": "title",
+      "fields": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "id": "description",
+          "name": "Description",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "image",
+          "name": "Image",
+          "type": "Link",
+          "linkType": "Asset",
+          "required": true,
+          "validations": [
+            {
+              "linkMimetypeGroup": ["image"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "contactSubmission"
+      },
+      "name": "Contact Submission",
+      "description": "Contact form submissions from website visitors",
+      "displayField": "email",
+      "fields": [
+        {
+          "id": "firstName",
+          "name": "First Name",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 50
+              }
+            }
+          ]
+        },
+        {
+          "id": "lastName",
+          "name": "Last Name",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 50
+              }
+            }
+          ]
+        },
+        {
+          "id": "email",
+          "name": "Email",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "regexp": {
+                "pattern": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+              }
+            }
+          ]
+        },
+        {
+          "id": "phone",
+          "name": "Phone",
+          "type": "Symbol",
+          "required": false,
+          "validations": [
+            {
+              "size": {
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "id": "comments",
+          "name": "Comments",
+          "type": "Text",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 10,
+                "max": 1000
+              }
+            }
+          ]
+        },
+        {
+          "id": "submissionDate",
+          "name": "Submission Date",
+          "type": "Date",
+          "required": true
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "siteSettings"
+      },
+      "name": "Site Settings",
+      "description": "Global site settings and configuration",
+      "displayField": "siteTitle",
+      "fields": [
+        {
+          "id": "siteTitle",
+          "name": "Site Title",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "id": "logo",
+          "name": "Logo",
+          "type": "Link",
+          "linkType": "Asset",
+          "required": false,
+          "validations": [
+            {
+              "linkMimetypeGroup": ["image"]
+            }
+          ]
+        },
+        {
+          "id": "footerText",
+          "name": "Footer Text",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "navigation",
+          "name": "Navigation",
+          "type": "Array",
+          "required": false,
+          "items": {
+            "type": "Link",
+            "linkType": "Entry",
+            "validations": [
+              {
+                "linkContentType": ["navigationItem"]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "navigationItem"
+      },
+      "name": "Navigation Item",
+      "description": "Individual navigation menu item",
+      "displayField": "label",
+      "fields": [
+        {
+          "id": "label",
+          "name": "Label",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 50
+              }
+            }
+          ]
+        },
+        {
+          "id": "url",
+          "name": "URL",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "size": {
+                "min": 1,
+                "max": 200
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
